@@ -1,0 +1,130 @@
+seq = []
+mergestep=[]
+merges1 = []
+merges2 = []
+merges3 = []
+while True:
+    try:
+        a = int(input("How many fragments do you want to make?"))
+    except ValueError:
+        print("This is not a valid number")
+        continue
+    break
+b = a
+while b > 0 :
+    b = b-1
+    c = str(input("Type in fragment (Spaces will be Removed)"))
+    aa = c.replace(" ", "")
+    seq.append(aa)
+x = 0
+v = a-1
+x2 = x
+v2 = v
+run = 1
+s = str("")
+while int(run) < int(a) :
+        print("RUN:" + str(run))
+        print(seq)
+        merge1 = ""
+        x=0
+        r = str("")
+        ss = str(" ")
+        q=str("")
+        merge10= 0
+        merge40=0
+        while x < len(seq) :
+            g = str(seq[x])
+            v=a-run
+            while v >= 0 :
+                h = str(seq[v])
+                i = 0
+                j = 0
+                merge = ""
+                while j < len(h) and i <len(g) :
+                    FirstChar = str(g[i])
+                    SecondChar = str(h[j])
+                    if (v != x) :
+                        if(FirstChar == SecondChar) :
+                            i = i+1
+                            j = j+1
+                            merge = str(merge + FirstChar)
+                        else :
+                            merge = ""
+                            j = j+1
+                            i=0
+                        mstep=merge
+                        if j == len(h) and len(mstep) > len(merge1) :
+                            merge1 = str(mstep)
+                            mergestep.append(merge1)
+                            qq = 0
+                            merge20 = len(mergestep)
+                            while qq < merge20 :
+                                merge30 = mergestep[qq]
+                                if len(ss) < len(merge30) :
+                                    ss = merge30
+                                qq = qq+1
+                                merge10 = str(ss)
+                                merges1.append(str(merge10))
+                                merge40 = int(len(merges1))
+                    else :
+                        j=j+1
+                        merge = ""
+                zz = 0
+                while zz < merge40 :
+                    merge50 = int(len(merges1[zz]))
+                    if merge50 > len(q) :
+                        q = merges1[zz]
+                        merges2.append(q)
+                        h2 = h
+                        g2 = g
+                        v2 = v
+                    zz = zz + 1
+                v=v-1
+            yy = 0
+            while yy < len(merges2) :
+                if len(merges2[yy]) > len(r) :
+                    r = merges2[yy]
+                    merges3.append(r)
+                    x2 = x
+                yy = yy+1
+            x = x + 1
+        ww = 0
+        while ww < len(merges3) :
+            if len(merges3[ww]) > len(s) :
+                s = merges3[ww]
+                print(s)
+            ww = ww + 1
+        imerge = g2.replace(s,"", 1)
+        jmerge = h2.replace(s,"", 1)
+        ss = str(jmerge + s +imerge)
+        print(v2)
+        print(x2)
+        v3 = seq[v2]
+        print(v3)
+        x3 = seq[x2]
+        print(x3)
+        pop1 = 0
+        pop2 = 0
+        seqlen = len(seq)
+        while pop1 < seqlen :
+            if seq[pop1] == x3 :
+                seq.pop(x2)
+            seqlen = len(seq)
+            pop1=pop1+1
+        seqlen = len(seq)
+        while pop2 < seqlen :
+            if seq[pop2] == v3 :
+                v2 = pop2
+                seq.pop(v2)
+            seqlen = len(seq)
+            pop2 = pop2 + 1
+        seq.append(ss)
+        s=str("")
+        mergestep.clear()
+        merges1.clear()
+        merges2.clear()
+        merges3.clear()
+        run = run + 1
+ 
+print("Final:")
+print(str(seq))
